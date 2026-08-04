@@ -4,14 +4,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/api")
-public class WebController {
+public class EventController {
     private final EventRepository eventRepository;
 
-    public WebController(EventRepository eventRepository) {
+    public EventController(EventRepository eventRepository) {
         this.eventRepository = eventRepository;
     }
 
@@ -26,5 +27,11 @@ public class WebController {
     @PostMapping("/events")
     public Event createEvent(@RequestBody Event event) {
         return eventRepository.save(event);
+    }
+
+    @GetMapping("/events/{id}")
+    public Event findEvent(@PathVariable UUID id) {
+        return eventRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Event not found"));
     }
 }
