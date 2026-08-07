@@ -88,5 +88,5 @@ export default function CreateEventForm() {
         <button type="submit">Create Event</button>
       </form>
     </div>
-  )
+  );
 }
