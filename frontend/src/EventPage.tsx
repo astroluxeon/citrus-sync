@@ -2,6 +2,11 @@ import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import {TIME_INTERVAL, ONE_DAY, parseTime, generateTimeSlots} from './time-utils.ts';
 
+interface GuestResponse {
+  user: string;
+  availability: number[];
+}
+
 export default function EventPage() {
   const [eventData, setEventData] = useState({
     name: "",
@@ -16,6 +21,7 @@ export default function EventPage() {
   const [timeSlots, setTimeSlots] = useState<{startTime: number, endTime: number}[]>([]);
   const [selectedSlots, setSelectedSlots] = useState<Set<number>>(new Set());
   const [mouseDown, setMouseDown] = useState<boolean>(false);
+  const [guestResponses, setGuestResponses] = useState<GuestResponse[]>([]);
 
   const {id} = useParams<string>();
 
