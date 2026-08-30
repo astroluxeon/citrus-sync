@@ -1,7 +1,7 @@
-const TIME_INTERVAL = 30 * 60 * 1000;
-const ONE_DAY = 24 * 60 * 60 * 1000;
+export const TIME_INTERVAL = 30 * 60 * 1000;
+export const ONE_DAY = 24 * 60 * 60 * 1000;
 
-function parseTime(time: string) {
+export function parseTime(time: string) {
   const [hours, minutes] = time.split(':');
   return (parseInt(hours) * 60 * 60 * 1000) + (parseInt(minutes) * 60 * 1000);
 }
